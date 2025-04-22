@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XE4HTS2YMF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XE4HTS2YMF');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inference-Time Scaling for Flow Models via Stochastic Generation and Rollover Budget Forcing</title>
+
+    <meta property='og:title' content='Flow Model Inference Time Scaling. arXiv2025'/>
+    <meta property='og:url' content='https://flow-inference-time-scaling.github.io/'/>
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/tab_gallery.css">
+    <link rel="stylesheet" href="./static/css/image_card_fader.css">
+    <link rel="stylesheet" href="./static/css/image_card_slider.css">
+    <link rel="icon" href="./static/images/rbf.ico">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/magnifier.js"></script>
+    <script type="text/javascript" async
+        src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+    </script>
+    <script type="text/javascript" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <section class="hero banner">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">Inference-Time Scaling for Flow Models via <br> Stochastic Generation and Rollover Budget Forcing </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://jh27kim.github.io/">Jaihoon Kim*</a>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://github.com/taehoon-yoon/">Taehoon Yoon*</a>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://github.com/Jisung0111">Jisung Hwang*</a>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://mhsung.github.io/">Minhyuk Sung</a>
+                            </span>
+                        </div>
+                        
+                        <div class="publication-institution">KAIST</div>
+                        
+                        <div class="publication-contribution">* Equal contribution.</div>
+                        
+                      
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="https://flow-inference-time-scaling.github.io/static/manuscript.pdf" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2503.19385" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://github.com/KAIST-Visual-AI-Group/Flow-Inference-Time-Scaling" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content has-text-centered">
+        <video width="70%" autoplay muted loop playsinline controls>
+            <source src="./static/images/demo.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <!-- <h2 class="title is-3 has-text-centered">tl; dr</h2> -->
+            <div class="container is-max-desktop has-text-centered">
+                <h3 class="title is-5">TL;DR: A state-of-the-art inference-time scaling technique for flow models like FLUX, precisely aligning with user preferences—such as text prompts, object quantities, and more—at a compute cost of under $1!</h3> 
+                <div class="content has-text-centered">
+                    <img src="./static/images/teaser.jpg" class="interpolation-image"/>
+                </div>
+                Our inference-time scaling method aligns pretrained flow models with user preferences. 
+                In the top row, adding more compute improves alignment, with lower Residual Sum of Squares (RSS) in counting image generation indicating a closer match between generated images and specified object counts. 
+                Our method extends the capabilities of pretrained flow models (left side of each case), producing outputs that better align with user preferences (right side of each case, red box).
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Abstract</h2>
+            <div class="columns is-centered">
+                <div class="column is-four-fifths">
+                    <div class="content has-text-justified">
+                        <p>
+                            We propose an inference-time scaling approach for pretrained flow models. 
+                            Recently, inference-time scaling has gained significant attention in LLMs and diffusion models, improving sample quality or better aligning outputs with user preferences by leveraging additional computation. 
+                            For diffusion models, particle sampling has allowed more efficient scaling due to the stochasticity at intermediate denoising steps. 
+                            On the contrary, while flow models have gained popularity as an alternative to diffusion models--offering faster generation and high-quality outputs in state-of-the-art image and video generative models--efficient inference-time scaling methods used for diffusion models cannot be directly applied due to their deterministic generative process. 
+                            To enable efficient inference-time scaling for flow models, we propose three key ideas: 1) SDE-based generation, enabling particle sampling in flow models, 2) Interpolant conversion employs an alternative generative trajectory, broadening the search space and enhancing sample diversity, and 3) Rollover Budget Forcing (RBF), an adaptive allocation of computational resources across timesteps to maximize budget utilization. 
+                            Our experiments show that SDE-based generation, particularly variance-preserving (VP) interpolant-based generation, improves the performance of particle sampling methods for inference-time scaling in flow models. 
+                            Additionally, we demonstrate that RBF with VP-SDE achieves the best performance, outperforming all previous inference-time scaling approaches. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">💡 Main Idea</h2>
+            <h3 class="title is-4">Inference-Time SDE Conversion</h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/linear_sde.jpg" width="100%">
+            </div>
+            <div class="content has-text-justified">
+                Particle sampling is a widely used strategy in diffusion models for efficient inference-time scaling.
+                However, it cannot be directly applied to flow models, which rely on deterministic PF-ODE sampling (see Linear ODE in the left figure).
+                This lack of stochasticity limits the flexibility of flow models for inference-time reward alignment (see (a) in the right figure).
+                To address this, we introduce an SDE-based generation process that enables particle sampling in flow models.
+                However, in practice, this alone does not provide sufficient sample diversity for effective exploration (see (b) in the right figure). 
+            </div>
+            <h3 class="title is-4">Inference-Time Interpolant Conversion</h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/vp_sde.jpg" width="70%">
+            </div>
+            <div class="content has-text-justified">
+                Inspired by the effective use of particle sampling in diffusion models, we identify the choice of interpolant as a key factor. 
+                While diffusion models typically adopt a Variance Preserving (VP) interpolant, flow models rely on a linear interpolant. 
+                To expand the search space, we propose converting the linear trajectory of flow models into a VP-SDE-based path (see VP-SDE in the left figure). 
+                This inference-time interpolant conversion enhances exploration and enables more effective particle sampling (see (c) in the right figure).
+            </div>
+            <!--  -->
+            <h3 class="title is-4">Rollover Budget Forcing</h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/search_algorithms.jpg" width="100%">
+            </div>
+            <div class="content has-text-justified">
+                <p>
+                    Previous particle sampling methods [1-3] use a fixed number of particles at each denoising step. 
+                    Our analysis reveals that the required number of function evaluations (NFEs) to find a better sample varies across timesteps, making uniform allocation inefficient. 
+                    Rollover Budget Forcing (RBF) addresses this by adopting a rollover strategy: when a high-reward particle is found early within the allocated quota, the unused NFEs are carried over to the next step—enabling adaptive compute allocation and more effective alignment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">🖼️ Qualitative Results</h2>
+            <div class="content has-text-justified">
+                <p>
+                    Without additional training, our method, RBF, can align pretrained flow models with diverse user preferences, including logical relations, spatial relations, and object quantities. 
+                </p>
+            </div>
+            <h3 class="title is-4">Compositional Text-to-Image Generation</h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/quali_compo_main.jpg" width="100%">
+            </div>
+            <!--  -->
+            <h3 class="title is-4">Quantity-Aware Image Generation</h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/quali_quantity_main.jpg" width="100%">
+            </div>
+            <!--  -->
+            <h3 class="title is-4">SDE/Interpolant Conversion</h3>
+            <div class="content has-text-justified">
+                <p>
+                    We observe a consistent improvement in alignment when applying inference-time SDE conversion (linear SDE) and interpolant conversion (VP SDE), as they expand the search space. 
+                    This enables efficient use of particle sampling in flow models, outperforming other search methods based on linear ODE, such as BoN and SoP [4]. 
+                </p>
+            </div>
+            <div class="content has-text-centered">
+                <img src="./static/images/quali_ode_sde_vp.jpg" width="100%">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Additional Qualitative Results</h2>
+            <div class="content has-text-centered">
+                <img src="./static/images/quali_additional.jpg" class="interpolation-image" />
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Acknowledgement</h2>
+            <div class="content has-text-justified">
+                <p>
+                    We thank <a href="https://dvelopery0115.github.io/"> Seungwoo Yoo</a> and <a href="https://63days.github.io/"> Juil Koo</a> for providing constructive feedback of our manuscript. 
+                    Thank you to <a href="https://phillipinseoul.github.io/"> Phillip Y. Lee</a> for helpful discussions on Vision Language Models. 
+                </p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">References</h2>
+            [1] <a href="https://arxiv.org/abs/2501.05803">Test-time Alignment of Diffusion Models without Reward Over-optimization, Kim et al., ICLR 2025</a> <br>
+            [2] <a href="https://arxiv.org/abs/2502.00968">CoDe: Blockwise Control for Denoising Diffusion Models, Singh et al., arXiv 2025</a> <br>
+            [3] <a href="https://arxiv.org/abs/2408.08252">Derivative-Free Guidance in Continuous and Discrete Diffusion Models with Soft Value-Based Decoding, Li et al., arXiv 2024</a>
+            [4] <a href="https://arxiv.org/abs/2501.09732">Inference-Time Scaling for Diffusion Models beyond Scaling Denoising Steps, Ma et al., arXiv 2025</a>
+          </div>
+        </div>
+    </section>
+
+    <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title"><a id="bibtex">BibTeX</a></h2>
+        <pre style="white-space: pre-wrap;"><code>@article{kim2025inference,
+        title  = {Inference-Time Scaling for Flow Models via Stochastic Generation and Rollover Budget Forcing},
+        author={Kim, Jaihoon and Yoon, Taehoon and Hwang, Jisung and Sung, Minhyuk},
+        journal={arXiv preprint arXiv:2503.19385},
+        year   = {2025}}</code></pre>
+    </div> -->
+
+    
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content" style="text-align: left;">
+          <h2 class="title is-4"><a id="bibtex">Citation</a></h2>
+          <p>If you find our work helpful, please cite the following paper.</p>
+      
+          <div style="position: relative; background-color: #ffffff; padding: 0.5em 0.75em; border-radius: 4px; font-family: monospace; color: #000; overflow-x: auto; border: 1px solid #ddd; display: inline-block; text-align: left;">
+            <button 
+              id="copy-button"
+              onclick="copyBibtex()" 
+              style="position: absolute; top: 6px; right: 6px; font-size: 0.75rem; background: #f5f5f5; color: #333; border: 1px solid #ccc; border-radius: 3px; padding: 0.2em 0.4em; cursor: pointer;">
+              📋
+            </button>
+            <span id="copied-msg" style="display: none; position: absolute; top: 6px; right: 6px; font-size: 0.75rem; background: #e8ffe8; color: #27ae60; border: 1px solid #27ae60; border-radius: 3px; padding: 0.2em 0.4em;">
+              ✅
+            </span>
+            <code id="bibtex-code" style="white-space: pre; background: none;">
+      @article{kim2025inference,
+        title  = {Inference-Time Scaling for Flow Models via Stochastic Generation and Rollover Budget Forcing},
+        author = {Kim, Jaihoon and Yoon, Taehoon and Hwang, Jisung and Sung, Minhyuk},
+        journal= {arXiv preprint arXiv:2503.19385},
+        year   = {2025}
+      }
+            </code>
+          </div>
+      
+          <script>
+            function copyBibtex() {
+              const code = document.getElementById("bibtex-code").innerText;
+              navigator.clipboard.writeText(code).then(() => {
+                document.getElementById("copy-button").style.display = "none";
+                document.getElementById("copied-msg").style.display = "inline-block";
+                setTimeout(() => {
+                  document.getElementById("copied-msg").style.display = "none";
+                  document.getElementById("copy-button").style.display = "inline-block";
+                }, 1500);
+              });
+            }
+          </script>
+        </div>
+      </section>
+      
+      
+      
+      
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            Website adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a href="https://joonghyuk.com/instantdrag-web/">InstantDrag</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
