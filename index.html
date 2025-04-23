@@ -12,10 +12,10 @@
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inference-Time Scaling for Flow Models via Stochastic Generation and Rollover Budget Forcing</title>
+    <title>Perspective-Aware Reasoning in Vision-Language Models via Mental Imagery Simulation</title>
 
-    <meta property='og:title' content='Flow Model Inference Time Scaling. arXiv2025'/>
-    <meta property='og:url' content='https://flow-inference-time-scaling.github.io/'/>
+    <meta property='og:title' content='Perspective-Aware Reasoning. arXiv2025'/>
+    <meta property='og:url' content='https://apc-vlm.github.io/'/>
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="./static/css/tab_gallery.css">
     <link rel="stylesheet" href="./static/css/image_card_fader.css">
     <link rel="stylesheet" href="./static/css/image_card_slider.css">
-    <link rel="icon" href="./static/images/rbf.ico">
+    <link rel="icon" href="./static/images/apc.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -48,33 +48,39 @@
 <body>
     <section class="hero banner">
         <div class="hero-body">
-            <div class="container is-max-desktop">
+            <div class="container is-fluid">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-2 publication-title">Inference-Time Scaling for Flow Models via <br> Stochastic Generation and Rollover Budget Forcing </h1>
+                        <img src="./static/images/logo_apc.png" width="120px" style="margin-bottom: 20px;">
+                        <h1 class="title is-2 publication-title">Perspective-Aware Reasoning in Vision-Language Models <br> via Mental Imagery Simulation</h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a href="https://jh27kim.github.io/">Jaihoon Kim*</a>
+                                <a href="https://phillipinseoul.github.io/">Phillip Y. Lee<sup>1</sup></a>
                             </span>
                             <span class="author-block">
-                                <a href="https://github.com/taehoon-yoon/">Taehoon Yoon*</a>
+                                <a href="https://jihyeonje.com/">Jihyeon Je<sup>2</sup></a>
                             </span>
                             <span class="author-block">
-                                <a href="https://github.com/Jisung0111">Jisung Hwang*</a>
+                                <a href="https://charlieppark.kr/">Chanho Park<sup>1</sup></a>
                             </span>
                             <span class="author-block">
-                                <a href="https://mhsung.github.io/">Minhyuk Sung</a>
+                                <a href="https://mikacuy.github.io/">Mikaela Angelina Uy<sup>3</sup></a>
                             </span>
                         </div>
-                        
-                        <div class="publication-institution">KAIST</div>
-                        
-                        <div class="publication-contribution">* Equal contribution.</div>
-                        
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://geometry.stanford.edu/?member=guibas">Leonidas Guibas<sup>2</sup></a>
+                            </span>
+                            <span class="author-block">
+                                <a href="https://mhsung.github.io/">Minhyuk Sung<sup>1</sup></a>
+                            </span>
+                        </div>
+                        <div class="publication-institution is-size-5">KAIST<sup>1</sup> &nbsp; Stanford University<sup>2</sup> &nbsp; NVIDIA<sup>3</sup></div>
                       
+                        <br>
                         <div class="publication-links">
                             <span class="link-block">
-                                <a href="https://flow-inference-time-scaling.github.io/static/manuscript.pdf" class="external-link button is-normal is-rounded is-dark">
+                                <a href="" class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fas fa-file-pdf"></i>
                                     </span>
@@ -82,7 +88,7 @@
                                 </a>
                             </span>
                             <span class="link-block">
-                                <a href="https://arxiv.org/abs/2503.19385" class="external-link button is-normal is-rounded is-dark">
+                                <a href="" class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="ai ai-arxiv"></i>
                                     </span>
@@ -90,7 +96,7 @@
                                 </a>
                             </span>
                             <span class="link-block">
-                                <a href="https://github.com/KAIST-Visual-AI-Group/Flow-Inference-Time-Scaling" class="external-link button is-normal is-rounded is-dark">
+                                <a href="https://github.com/KAIST-Visual-AI-Group/APC-VLM" class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
                                     </span>
@@ -104,24 +110,14 @@
         </div>
     </section>
 
-    <div class="content has-text-centered">
-        <video width="70%" autoplay muted loop playsinline controls>
-            <source src="./static/images/demo.mp4" type="video/mp4">
-        </video>
-    </div>
-
-
-    <section class="hero is-light is-small">
+    <section class="hero is-small">
         <div class="hero-body">
-            <!-- <h2 class="title is-3 has-text-centered">tl; dr</h2> -->
             <div class="container is-max-desktop has-text-centered">
-                <h3 class="title is-5">TL;DR: A state-of-the-art inference-time scaling technique for flow models like FLUX, precisely aligning with user preferences—such as text prompts, object quantities, and more—at a compute cost of under $1!</h3> 
-                <div class="content has-text-centered">
-                    <img src="./static/images/teaser.jpg" class="interpolation-image"/>
-                </div>
-                Our inference-time scaling method aligns pretrained flow models with user preferences. 
-                In the top row, adding more compute improves alignment, with lower Residual Sum of Squares (RSS) in counting image generation indicating a closer match between generated images and specified object counts. 
-                Our method extends the capabilities of pretrained flow models (left side of each case), producing outputs that better align with user preferences (right side of each case, red box).
+                <h3 class="title is-5">TL;DR: TO ADD!</h3> 
+            </div>
+            <br>
+            <div class="content has-text-centered">
+                <img width="70%" src="./static/images/teaser_apc.jpg" class="interpolation-image"/>
             </div>
         </div>
     </section>
@@ -133,13 +129,17 @@
                 <div class="column is-four-fifths">
                     <div class="content has-text-justified">
                         <p>
-                            We propose an inference-time scaling approach for pretrained flow models. 
-                            Recently, inference-time scaling has gained significant attention in LLMs and diffusion models, improving sample quality or better aligning outputs with user preferences by leveraging additional computation. 
-                            For diffusion models, particle sampling has allowed more efficient scaling due to the stochasticity at intermediate denoising steps. 
-                            On the contrary, while flow models have gained popularity as an alternative to diffusion models--offering faster generation and high-quality outputs in state-of-the-art image and video generative models--efficient inference-time scaling methods used for diffusion models cannot be directly applied due to their deterministic generative process. 
-                            To enable efficient inference-time scaling for flow models, we propose three key ideas: 1) SDE-based generation, enabling particle sampling in flow models, 2) Interpolant conversion employs an alternative generative trajectory, broadening the search space and enhancing sample diversity, and 3) Rollover Budget Forcing (RBF), an adaptive allocation of computational resources across timesteps to maximize budget utilization. 
-                            Our experiments show that SDE-based generation, particularly variance-preserving (VP) interpolant-based generation, improves the performance of particle sampling methods for inference-time scaling in flow models. 
-                            Additionally, we demonstrate that RBF with VP-SDE achieves the best performance, outperforming all previous inference-time scaling approaches. 
+                            We present a framework for perspective-aware reasoning in vision-language models (VLMs) through mental imagery simulation. 
+                            Perspective-taking&mdash;the ability to perceive an environment or situation from an alternative viewpoint&mdash;is a key benchmark for 
+                            human-level visual understanding, essential for environmental interaction and collaboration with autonomous agents. Despite 
+                            advancements in spatial reasoning within VLMs, recent research has shown that modern VLMs significantly lack perspective-aware
+                            reasoning capabilities and exhibit a strong bias toward egocentric interpretations. To bridge the gap between VLMs and human perception, 
+                            we focus on the role of mental imagery, where humans perceive the world through abstracted representations that facilitate perspective 
+                            shifts. Motivated by this, we propose a framework for perspective-aware reasoning, named Abstract Perspective Change (APC), 
+                            that effectively leverages vision foundation models, such as object detection, segmentation, and orientation estimation, 
+                            to construct scene abstractions and enable perspective transformations. Our experiments on synthetic and real-image benchmarks, 
+                            compared with various VLMs, demonstrate significant improvements in perspective-aware reasoning with our framework, further outperforming 
+                            fine-tuned spatial reasoning models and novel-view-synthesis-based approaches.
                         </p>
                     </div>
                 </div>
@@ -149,86 +149,35 @@
         
     <section class="section">
         <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">💡 Main Idea</h2>
-            <h3 class="title is-4">Inference-Time SDE Conversion</h3>
+            <h2 class="title is-3 has-text-centered">👀 Problem Definition: Perspective-Aware Reasoning</h2>
             <div class="content has-text-centered">
-                <img src="./static/images/linear_sde.jpg" width="100%">
+                <img src="./static/images/ego_and_allo.jpg" width="100%">
             </div>
             <div class="content has-text-justified">
-                Particle sampling is a widely used strategy in diffusion models for efficient inference-time scaling.
-                However, it cannot be directly applied to flow models, which rely on deterministic PF-ODE sampling (see Linear ODE in the left figure).
-                This lack of stochasticity limits the flexibility of flow models for inference-time reward alignment (see (a) in the right figure).
-                To address this, we introduce an SDE-based generation process that enables particle sampling in flow models.
-                However, in practice, this alone does not provide sufficient sample diversity for effective exploration (see (b) in the right figure). 
+                While VLMs perform well when questions are asked from the egocentric (i.e. camera's) perspective, they struggle when the same questions are posed from an 
+                allocentric perspective, showing a strong bias toward egocentric reasoning [<a href="#ref1">1</a>]. Allocentric reasoning is crucial for high-level spatial tasks, and 
+                serves as a key benchmark for human-level spatial understanding, as also recognized in previous studies on VLM spatial reasoning [<a href="#ref1">1</a>, <a href="#ref2">2</a>, <a href="#ref3">3</a>, <a href="#ref4">4</a>, <a href="#ref5">5</a>].
+                <b>In this work, we aim to extend the spatial reasoning capabilities of VLMs to 🌟arbitrary perspectives🌟</b>, thereby bridging the gap between VLMs and human perception and opening 
+                up new possibilities for VLM-based applications.
             </div>
-            <h3 class="title is-4">Inference-Time Interpolant Conversion</h3>
-            <div class="content has-text-centered">
-                <img src="./static/images/vp_sde.jpg" width="70%">
-            </div>
-            <div class="content has-text-justified">
-                Inspired by the effective use of particle sampling in diffusion models, we identify the choice of interpolant as a key factor. 
-                While diffusion models typically adopt a Variance Preserving (VP) interpolant, flow models rely on a linear interpolant. 
-                To expand the search space, we propose converting the linear trajectory of flow models into a VP-SDE-based path (see VP-SDE in the left figure). 
-                This inference-time interpolant conversion enhances exploration and enables more effective particle sampling (see (c) in the right figure).
-            </div>
-            <!--  -->
-            <h3 class="title is-4">Rollover Budget Forcing</h3>
-            <div class="content has-text-centered">
-                <img src="./static/images/search_algorithms.jpg" width="100%">
-            </div>
-            <div class="content has-text-justified">
-                <p>
-                    Previous particle sampling methods [1-3] use a fixed number of particles at each denoising step. 
-                    Our analysis reveals that the required number of function evaluations (NFEs) to find a better sample varies across timesteps, making uniform allocation inefficient. 
-                    Rollover Budget Forcing (RBF) addresses this by adopting a rollover strategy: when a high-reward particle is found early within the allocated quota, the unused NFEs are carried over to the next step—enabling adaptive compute allocation and more effective alignment.
-                </p>
-            </div>
+            <br>
+            <h2 class="title is-3 has-text-centered">💡 Main Idea: Abstract Perspective Change</h2>
+            <h3 class="title is-4">TODO.</h3>
         </div>
     </section>
 
     <section class="section">
         <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">🖼️ Qualitative Results</h2>
+            <h2 class="title is-3 has-text-centered">🖼️ Results</h2>
             <div class="content has-text-justified">
                 <p>
-                    Without additional training, our method, RBF, can align pretrained flow models with diverse user preferences, including logical relations, spatial relations, and object quantities. 
+                    TODO.
                 </p>
             </div>
-            <h3 class="title is-4">Compositional Text-to-Image Generation</h3>
-            <div class="content has-text-centered">
-                <img src="./static/images/quali_compo_main.jpg" width="100%">
-            </div>
-            <!--  -->
-            <h3 class="title is-4">Quantity-Aware Image Generation</h3>
-            <div class="content has-text-centered">
-                <img src="./static/images/quali_quantity_main.jpg" width="100%">
-            </div>
-            <!--  -->
-            <h3 class="title is-4">SDE/Interpolant Conversion</h3>
-            <div class="content has-text-justified">
-                <p>
-                    We observe a consistent improvement in alignment when applying inference-time SDE conversion (linear SDE) and interpolant conversion (VP SDE), as they expand the search space. 
-                    This enables efficient use of particle sampling in flow models, outperforming other search methods based on linear ODE, such as BoN and SoP [4]. 
-                </p>
-            </div>
-            <div class="content has-text-centered">
-                <img src="./static/images/quali_ode_sde_vp.jpg" width="100%">
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">Additional Qualitative Results</h2>
-            <div class="content has-text-centered">
-                <img src="./static/images/quali_additional.jpg" class="interpolation-image" />
-            </div>
-          </div>
-        </div>
     </section>
 
 
-    <section class="section">
+    <!-- <section class="section">
         <div class="container is-max-desktop">
             <h2 class="title is-3 has-text-centered">Acknowledgement</h2>
             <div class="content has-text-justified">
@@ -239,15 +188,16 @@
             </div>
         </div>
     </div>
-    </section>
+    </section> -->
 
     <section class="section">
         <div class="container is-max-desktop">
             <h2 class="title is-3 has-text-centered">References</h2>
-            [1] <a href="https://arxiv.org/abs/2501.05803">Test-time Alignment of Diffusion Models without Reward Over-optimization, Kim et al., ICLR 2025</a> <br>
-            [2] <a href="https://arxiv.org/abs/2502.00968">CoDe: Blockwise Control for Denoising Diffusion Models, Singh et al., arXiv 2025</a> <br>
-            [3] <a href="https://arxiv.org/abs/2408.08252">Derivative-Free Guidance in Continuous and Discrete Diffusion Models with Soft Value-Based Decoding, Li et al., arXiv 2024</a>
-            [4] <a href="https://arxiv.org/abs/2501.09732">Inference-Time Scaling for Diffusion Models beyond Scaling Denoising Steps, Ma et al., arXiv 2025</a>
+            <span id="ref1">[1]</span> <a href="https://arxiv.org/abs/2410.17385">Do Vision-Language Models Represent Space and How? Evaluating Spatial Frame of Reference Under Ambiguities, Zhang et al., ICLR 2025</a> <br>
+            <span id="ref2">[2]</span> <a href="https://arxiv.org/abs/2412.07825">3DSRBench: A Comprehensive 3D Spatial Reasoning Benchmark, Ma et al., arXiv 2024</a> <br>
+            <span id="ref3">[3]</span> <a href="https://arxiv.org/abs/2409.12969">Seeing Through Their Eyes: Evaluating Visual Perspective Taking in Vision Language Models, Góral et al., arXiv 2024</a> <br>
+            <span id="ref4">[4]</span> <a href="https://arxiv.org/abs/2406.04138">The 3D-PC: A Benchmark for Visual Perspective Taking in Humans and Machines, Linsley et al., ICLR 2025</a> <br>
+            <span id="ref5">[5]</span> <a href="https://arxiv.org/abs/2412.14171">Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces, Yang et al., CVPR 2025</a> <br>
           </div>
         </div>
     </section>
@@ -320,7 +270,7 @@
                             This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
                         </p>
                         <p>
-                            Website adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a href="https://joonghyuk.com/instantdrag-web/">InstantDrag</a>.
+                            Website adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, <a href="https://joonghyuk.com/instantdrag-web/">InstantDrag</a> and <a href="https://flow-inference-time-scaling.github.io/">RBF</a>.
                         </p>
                     </div>
                 </div>
