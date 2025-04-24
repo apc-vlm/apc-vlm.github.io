@@ -80,7 +80,7 @@
                         <br>
                         <div class="publication-links">
                             <span class="link-block">
-                                <a href="" class="external-link button is-normal is-rounded is-dark">
+                                <a href="./static/Perspective_Aware_Reasoning_Preprint.pdf" class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fas fa-file-pdf"></i>
                                     </span>
@@ -109,11 +109,12 @@
             </div>
         </div>
     </section>
-
     <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop has-text-centered">
-                <h3 class="title is-5">TL;DR: TO ADD!</h3> 
+                <h3 class="title is-5"">
+                    📝 TL;DR: With our framework, VLMs can perform spatial reasoning in arbitrary perspectives.
+                </h3> 
             </div>
             <br>
             <div class="content has-text-centered">
@@ -149,29 +150,101 @@
         
     <section class="section">
         <div class="container is-max-desktop">
-            <h2 class="title is-3 has-text-centered">👀 Problem Definition: Perspective-Aware Reasoning</h2>
+            <hr>
+            <h2 class="title is-3 has-text-centered">👀 Problem Definition</h2>
+            <h3 class="title is-6 has-text-centered">Perspectives are important, but remain a missing block in VLM spatial reasoning.</h3>
             <div class="content has-text-centered">
                 <img src="./static/images/ego_and_allo.jpg" width="100%">
             </div>
             <div class="content has-text-justified">
+                <b>Egocentric vs. Allocentric.</b>
                 While VLMs perform well when questions are asked from the egocentric (i.e. camera's) perspective, they struggle when the same questions are posed from an 
                 allocentric perspective, showing a strong bias toward egocentric reasoning [<a href="#ref1">1</a>]. Allocentric reasoning is crucial for high-level spatial tasks, and 
                 serves as a key benchmark for human-level spatial understanding, as also recognized in previous studies on VLM spatial reasoning [<a href="#ref1">1</a>, <a href="#ref2">2</a>, <a href="#ref3">3</a>, <a href="#ref4">4</a>, <a href="#ref5">5</a>].
                 <b>In this work, we aim to extend the spatial reasoning capabilities of VLMs to 🌟arbitrary perspectives🌟</b>, thereby bridging the gap between VLMs and human perception and opening 
                 up new possibilities for VLM-based applications.
             </div>
+
+            <br><hr>
+            <h2 class="title is-3 has-text-centered">🤔 How Do <i>Humans</i> Shift Perspectives?</h2>
+            <h3 class="title is-6 has-text-centered">We can imagine a scene from another viewpoint by forming an <i>abstract</i> version of it and rotating it in our mind.</h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/mental_imagery_concept.jpg" width="50%">
+            </div>
+            <div class="content has-text-justified">
+                <b>Mental Imagery Simulation.</b>
+                Inspired by how humans employ mental imagery [<a href="#ref6">6</a>, <a href="#ref7">7</a>, <a href="#ref8">8</a>, <a href="#ref9">9</a>] to reason from across different perspectives (left), we propose a similar process for VLMs, 
+                by constructing an explicit abstraction of the input scene and using it as a foundation for perspective changes (right).
+            </div>
+            <div class="content has-text-justified">
+                Based on this idea, we build our framework by answering the following questions:
+                <ol>
+                    <b><li>Given an image of a scene and a question based on it, how can we turn it into an abstract 3D scene?</li></b>
+                    <b><li>After transforming the abstract scene to align with a given perspective, how can we feed it back to the VLM?</li></b>
+                </ol>
+            </div>
+            <br><hr>
+            <h2 class="title is-3 has-text-centered">💡 Abstract Perspective Change</h2>
+            <h3 class="title is-6 has-text-centered">
+                We propose <i>APC</i>, a framework that enables VLMs to perform perspective-aware reasoning, <br>by explicitly simulating the mental imagery process of humans.
+            </h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/main_pipeline_apc.jpg" width="100%">
+            </div>
+            <div class="content has-text-justified">
+                Our proposed framework consists of three stages:
+                <ol>
+                    <li><b>Scene Abstraction (Sec. 3.1)</b>: APC first detects the objects of interest and build a coarse 3D abstraction of the scene using off-the-shelf vision foundation models.</li>
+                    <li><b>Perspective Change (Sec. 3.2)</b>: Then, a reference perspective is set and the abstraction is transformed into the reference viewer’s egocentric coordinate frame.</li>
+                    <li><b>Perspective Prompting (Sec. 3.3)</b>: Finally, APC passes the transformed scene to the VLM by producing (1) a numerical (textual) prompt or (2) an abstract visual prompt, and poses the question of interest from the reference perspective.</li>
+                </ol>
+            </div>
             <br>
-            <h2 class="title is-3 has-text-centered">💡 Main Idea: Abstract Perspective Change</h2>
-            <h3 class="title is-4">TODO.</h3>
+            <h2 class="title is-3 has-text-centered">🔍 Perspective Prompts</h2>
+            <h3 class="title is-6 has-text-centered">
+                In APC, the transformed abstract scene is then passed to the VLM in the form of a <i>prompt</i>.
+            </h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/perspective_prompts_apc.jpg" width="100%">
+            </div>
+            <div class="content has-text-justified">
+                <b>Perspective Prompt Samples.</b> We explore two variations of perspective prompting, <b>numerical (left)</b> and <b>visual (right)</b>. 
+                Numerical (textual) prompt is generated by directly utilizing the 3D coordinate and orientation information. 
+                To generate the Visual prompt, we first place a colored cube at each object’s identified 3D position then render the scene at the reference viewpoint, which results in an egocentric depiction of the scene.
+                In addition, we construct an abstract question along with object-color mapping to ground the abstracted view.
+            </div>
         </div>
     </section>
-
     <section class="section">
         <div class="container is-max-desktop">
+            <hr>
             <h2 class="title is-3 has-text-centered">🖼️ Results</h2>
+            <h3 class="title is-6 has-text-centered">
+                Comparison with Baseline VLMs.
+            </h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/qualitatives.png" width="100%">
+            </div>
             <div class="content has-text-justified">
                 <p>
-                    TODO.
+                    <b>Spatial Reasoning with Perspective Change.</b>
+                    Recent VLMs such as Qwen2.5-VL [<a href="#ref10">10</a>] and Cambrian-1 [<a href="#ref11">11</a>] often struggle with spatial reasoning tasks that require 
+                    a shift to a specific reference viewpoint. In constrast, our APC effectively handles such perspective changes by constructing a scene abstraction 
+                    and delivering the transformed view through a simple prompting technique.
+                </p>
+            </div>
+            <br>
+            <h3 class="title is-6 has-text-centered">
+                Probing the Perspective Awareness of VLMs.
+            </h3>
+            <div class="content has-text-centered">
+                <img src="./static/images/perspective_awareness.png" width="60%">
+            </div>
+            <div class="content has-text-justified">
+                <p>
+                    <b>Perspective Awareness.</b>
+                    Each plot shows accuracy versus the angular offset θ between the camera and the reference viewpoint. 
+                    While baselines show clear degradation at certain ranges of θ, APC retains robust accuracy across all angles, demonstrating strong perspective-aware reasoning.
                 </p>
             </div>
     </section>
@@ -198,6 +271,12 @@
             <span id="ref3">[3]</span> <a href="https://arxiv.org/abs/2409.12969">Seeing Through Their Eyes: Evaluating Visual Perspective Taking in Vision Language Models, Góral et al., arXiv 2024</a> <br>
             <span id="ref4">[4]</span> <a href="https://arxiv.org/abs/2406.04138">The 3D-PC: A Benchmark for Visual Perspective Taking in Humans and Machines, Linsley et al., ICLR 2025</a> <br>
             <span id="ref5">[5]</span> <a href="https://arxiv.org/abs/2412.14171">Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces, Yang et al., CVPR 2025</a> <br>
+            <span id="ref6">[6]</span> <a href="https://psycnet.apa.org/record/1989-98796-000">Principles of mental imagery., Finke, R. A, The MIT Press, 1989</a> <br>
+            <span id="ref7">[7]</span> <a href="https://plato.stanford.edu/entries/mental-imagery/">Mental imagery., Bence Nanay, The Stanford Encyclopedia of Philosophy, 1997</a> <br>
+            <span id="ref8">[8]</span> <a href="https://pubmed.ncbi.nlm.nih.gov/5540314/">Mental rotation of three-dimensional objects., Roger N Shepard and Jacqueline Metzler, Science, 1971</a> <br>
+            <span id="ref9">[9]</span> <a href="https://psycnet.apa.org/record/1979-00241-001">Visual images preserve metric spatial information: Evidence from studies of image scanning., Kosslyn et al., Journal of Experimental Psychology, 1978</a> <br>
+            <span id="ref10">[10]</span> <a href="https://arxiv.org/abs/2502.13923">Qwen2.5-VL Technical Report, Qwen Team Alibaba Group, arXiv 2025</a> <br>
+            <span id="ref11">[11]</span> <a href="https://arxiv.org/abs/2406.16860">Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs, NeurIPS 2024</a> <br>
           </div>
         </div>
     </section>
