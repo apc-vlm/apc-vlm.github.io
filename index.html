@@ -194,7 +194,8 @@
             <div class="content has-text-justified">
                 Our proposed framework consists of three stages:
                 <ol>
-                    <li><b>Scene Abstraction (Sec. 3.1)</b>: APC first detects the objects of interest and build a coarse 3D abstraction of the scene using off-the-shelf vision foundation models.</li>
+                    <li><b>Scene Abstraction (Sec. 3.1)</b>: APC first detects the objects of interest and build a coarse 3D abstraction of the scene using off-the-shelf vision foundation models.
+                    We employ models for object detection [<a href="#ref12">12</a>], segmentation [<a href="#ref13">13</a>], depth estimation [<a href="#ref14">14</a>], and orientation estimation [<a href="#ref15">15</a>].</li>
                     <li><b>Perspective Change (Sec. 3.2)</b>: Then, a reference perspective is set and the abstraction is transformed into the reference viewer’s egocentric coordinate frame.</li>
                     <li><b>Perspective Prompting (Sec. 3.3)</b>: Finally, APC passes the transformed scene to the VLM by producing (1) a numerical (textual) prompt or (2) an abstract visual prompt, and poses the question of interest from the reference perspective.</li>
                 </ol>
@@ -277,6 +278,10 @@
             <span id="ref9">[9]</span> <a href="https://psycnet.apa.org/record/1979-00241-001">Visual images preserve metric spatial information: Evidence from studies of image scanning., Kosslyn et al., Journal of Experimental Psychology, 1978</a> <br>
             <span id="ref10">[10]</span> <a href="https://arxiv.org/abs/2502.13923">Qwen2.5-VL Technical Report, Qwen Team Alibaba Group, arXiv 2025</a> <br>
             <span id="ref11">[11]</span> <a href="https://arxiv.org/abs/2406.16860">Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs, NeurIPS 2024</a> <br>
+            <span id="ref12">[12]</span> <a href="https://arxiv.org/abs/2303.05499">Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection, Liu et al., ECCV 2024</a> <br>
+            <span id="ref13">[13]</span> <a href="https://arxiv.org/abs/2404.01683">Segment Anything, Kirillov et al., ICCV 2023</a> <br>
+            <span id="ref14">[14]</span> <a href="https://arxiv.org/abs/2410.02073">Depth Pro: Sharp Monocular Metric Depth in Less Than a Second, Bochkovskii et al., ICLR 2025</a> <br>
+            <span id="ref15">[15]</span> <a href="https://arxiv.org/abs/2404.01683">Orient Anything: Learning Robust Object Orientation Estimation from Rendering 3D Models, Wang et al., arXiv 2024</a> <br>
           </div>
         </div>
     </section>
