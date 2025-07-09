@@ -1,5 +1,6 @@
 body {
-  font-family: 'Noto Sans', sans-serif;
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-family: 'Playfair Display', 'Castoro', serif; /* headings */
 }
 
 
@@ -49,12 +50,14 @@ body {
 }
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+    /* font-family: 'Google Sans', sans-serif; */
+    font-family: 'Playfair Display', 'Castoro', serif; /* headings */
 }
 
 .publication-authors {
     color: #000;
-    font-family: 'Google Sans', sans-serif;
+    /* font-family: 'Google Sans', sans-serif; */
+    font-family: 'Playfair Display', 'Castoro', serif; /* headings */
 }
 
 .publication-venue {
